@@ -1,0 +1,25 @@
+﻿<div style="max-width: 500px; margin: auto;">
+    <div ng-show="editorEnabled">
+        <select class="form-control input-sm" ng-model="widget.source.provider">
+            <option value="youtube">Youtube</option>
+            <option value="vimeo">Vimeo</option>
+        </select>
+        <br/>
+        <input type="text" class="form-control" ng-model="widget.source.video" placeholder="ID do vídeo..." />
+        <br />
+        <a class="btn btn-default btn-xs" ng-click="save()">Save</a>
+        or
+        <a class="btn btn-default btn-xs" ng-click="disableEditor()">Cancel</a>
+    </div>
+    <br/>
+    <div id="flex-video">
+        <div class="well wel-sm">
+            <div class="flex-media">
+                <iframe ng-src="{{trustSrc(widget.source.video)}}" ng-show="widget.source.provider === 'youtube'"
+                        width="800" height="423" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe ng-src="{{trustSrc(widget.source.video)}}" ng-show="widget.source.provider === 'vimeo'"
+                        width="800" height="423" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>

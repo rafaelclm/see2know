@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="login">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Login</title>
+
+    <link href="/public/assets/css/app.css" rel="stylesheet" />
+    <link href="/public/assets/libs/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="/public/assets/css/smartadmin-production.min.css" rel="stylesheet" />
+
+    <script src="/public/assets/libs/jquery/jquery.js" type="text/javascript"></script>
+    <script src="/public/assets/libs/twitter-bootstrap/js/bootstrap.js"></script>
+
+    <script src="/public/assets/libs/angular.js/angular.js" type="text/javascript"></script>
+    <script src="/public/assets/libs/lodash.js/lodash.js"></script>
+    <script src="/public/assets/libs/restangular/restangular.js"></script>
+    <script src="/public/assets/libs/angular.js/angular-translate.js" type="text/javascript"></script>
+
+    <script src="/public/translation/pt_br.js" type="text/javascript"></script>
+
+    <script src="/public/modules/login.js" type="text/javascript"></script>
+    <script src="/public/directives/loading.js"></script>
+
+    <script src="/public/services/AlertsService.js" type="text/javascript"></script>
+
+    <script src="/public/controllers/AlertsController.js" type="text/javascript"></script>
+    <script src="/public/controllers/LoginController.js" type="text/javascript"></script>
+
+</head>
+<body ng-controller="AlertsController">
+    <div style="position: fixed;
+             top: 20px; z-index: 5000;
+             left: 50%; margin-left: -50px;" class="panel panel-info" data-loading>
+        <div class="panel-body bg-info">
+            <img src="/public/assets/img/loading.gif" /><span class="text-muted"> Processando...</span>
+        </div>
+    </div>
+    <div style="position: fixed;
+             top: 20px; z-index: 5000; width: 250px; text-align: center;
+             left: 50%; margin-left: -125px;">
+        <div ng-repeat="(key,val) in alerts" class="alert {{key}}">
+            <div ng-repeat="msg in val">{{msg}}</div>
+        </div>
+    </div>
+    <div class="well well-sm header">
+        <a class="btn btn-default pull-right" href="/signup">Criar uma conta</a>
+    </div>
+    <div class=" container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-3 hidden-xs">
+            </div>
+            <div class="col-lg-4 col-md-6">
+                
+            </div>
+            <div class="col-lg-4 col-md-3">
+
+            </div>
+        </div>
+    </div>
+
+    <form class="panel panel-default panel-login" ng-controller="LoginController as ctrlLogin" ng-init="ctrlLogin.init()">
+        <div class="panel-body">
+            <hr />
+            <section class="row">
+                <div class="col-sm-12 col-md-6">
+                    <label><b>Usuário</b></label>
+                    <input class="form-control input-sm" type="text" ng-model="user.username" />
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <label><b>Senha</b></label>
+                    <input class="form-control input-sm" type="password" ng-model="user.password" />
+                </div>
+            </section>
+            <hr/>
+            <a class="btn btn-default" href="/auth/facebook">Login com Facebook</a>
+        </div>
+        <div class="panel-footer">
+            <a class="btn btn-default pull-right" ng-click="ctrlLogin.login(user)">Entrar</a>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+
+</body>
+</html>

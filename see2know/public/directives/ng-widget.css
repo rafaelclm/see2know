@@ -1,0 +1,59 @@
+﻿.btn-edit{
+    margin-right: 3px;
+    height: 100%;
+}
+.btn-remove{
+    height: 100%;
+}
+
+.widget, .widget-title, .widget-header, .widget-btn{
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+}
+
+.widget-header{
+    position: relative;
+    padding: 3px !important;
+    padding-left: 10px !important;
+    height: 30px;
+}
+
+.widget-buttons{
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    bottom: 3px;
+}
+
+.widget-btn{
+    line-height: 20px;
+}
+
+.flex-media {
+    position: relative;
+    padding-top: 1.5625rem;
+    padding-bottom: 67.5%;
+    height: 0;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+    .flex-media.widescreen {
+        padding-bottom: 56.34%;
+    }
+
+    .flex-media.vimeo {
+        padding-top: 0;
+    }
+
+    .flex-media iframe,
+    .flex-media object,
+    .flex-media embed,
+    .flex-media video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }

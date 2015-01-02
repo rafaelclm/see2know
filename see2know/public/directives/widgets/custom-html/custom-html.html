@@ -1,0 +1,13 @@
+﻿<div ng-show="editorEnabled">
+    <text-angular ng-model="widget.source.html"
+                  ta-toolbar="[['h1','h2','h3', 'h4'],
+                  ['justifyLeft','justifyCenter','justifyRight'],
+                  ['bold','italics','underline'], ['quote', 'ul', 'ol'], ['insertImage', 'insertLink', 'insertVideo']]"></text-angular>
+    <br />
+    <a class="btn btn-default btn-xs" ng-click="save()">Save</a>
+    or
+    <a class="btn btn-default btn-xs" ng-click="disableEditor()">Cancel</a>
+</div>
+<div ng-hide="editorEnabled">
+    <div html-preview ng-model="widget.source.html"></div>
+</div>

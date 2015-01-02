@@ -1,0 +1,58 @@
+﻿<div class="panel panel-default container" id="editor" ng-show="panel === 'editor'" ng-class="'scale-fade'">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Título do Tutorial..." ng-model="tutorial.title" />
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-default" ng-click="ctrlTutorial.showTemplates()">
+                    <span ng-hide="showTemplates.value">Modelos</span>
+                    <span ng-show="showTemplates.value">Painel</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div ng-include="'public/views/partials/templates.bootstrap.html'"></div>
+        <div ng-hide="showTemplates.value" ng-class="'scale-fade'">
+            <div>
+                <div class="pull-left">
+                    <a class="btn btn-default btn-xs" ng-click="ctrlTutorial.addPage()">Nova Página</a>
+                    <a class="btn btn-default btn-xs" ng-click="ctrlTutorial.removePage(currentPage)">Remover Página</a>
+                </div>
+                <div class="pull-right">
+                    <pagination direction-links="false" boundary-links="true"
+                                total-items="totalItems" ng-model="currentPage"></pagination>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div ng-repeat="page in tutorial.pages" ng-show="currentPage === ($index + 1)" ng-class="'slide-left'">
+                <div class="row">
+                    <article id="sortable" class="col-lg-12" ui-sortable ng-model="page.body">
+                        <div ng-repeat="widget in page.body" style="cursor: move;">
+                            <div widget="widget" on-remove="ctrlTutorial.removeWidget" current-page="currentPage"
+                                 template="panel" theme="success" title="DEFAULT WIDGET" is-editable="true" show-header="true"></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default container" id="preview" ng-show="panel === 'preview'" ng-class="'scale-fade'">
+    <div class="pull-right">
+        <pagination direction-links="false" boundary-links="true"
+                    total-items="totalItems" ng-model="currentPage"></pagination>
+    </div>
+    <div class="panel-body">
+        <div ng-repeat="page in tutorial.pages" ng-show="currentPage === ($index + 1)" ng-class="'slide-left'">
+            <div class="row">
+                <article class="col-lg-12">
+                    <div ng-repeat="widget in page.body" style="cursor: move;">
+                        <div widget="widget" theme="default"></div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>

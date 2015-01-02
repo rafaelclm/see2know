@@ -1,0 +1,20 @@
+﻿<div class="jumbotron">
+    <div ng-hide="editorEnabled">
+        <h1>{{widget.source.h1}}</h1>
+        <p>{{widget.source.p}}</p>
+        <p><a class="btn btn-primary btn-lg" href="{{widget.source.href}}" role="button">{{widget.source.a}}</a></p>
+    </div>
+    <div ng-show="editorEnabled">
+        <input type="text" class="form-control" ng-model="widget.source.h1" placeholder="Header..." />
+        <hr />
+        <textarea class="form-control" ng-model="widget.source.p" placeholder="Paragraph..."></textarea>
+        <hr />
+        <input type="text" class="form-control" ng-model="widget.source.a" placeholder="Text Link..." />
+        <hr />
+        <input type="text" class="form-control" ng-model="widget.source.href" placeholder="URL..." />
+        <br />
+        <a class="btn btn-default btn-xs" ng-click="save()">Save</a>
+        or
+        <a class="btn btn-default btn-xs" ng-click="disableEditor()">Cancel</a>
+    </div>
+</div>

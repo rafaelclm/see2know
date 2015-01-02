@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="signup">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Cadastrar</title>
+
+    <link href="/public/assets/css/app.css" rel="stylesheet" />
+    <link href="/public/assets/libs/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="/public/assets/css/smartadmin-production.min.css" rel="stylesheet" />
+
+    <script src="/public/assets/libs/jquery/jquery.js" type="text/javascript"></script>
+    <script src="/public/assets/libs/twitter-bootstrap/js/bootstrap.js"></script>
+
+    <script src="/public/assets/libs/angular.js/angular.js" type="text/javascript"></script>
+    <script src="/public/assets/libs/lodash.js/lodash.js" type="text/javascript"></script>
+    <script src="/public/assets/libs/restangular/restangular.js" type="text/javascript"></script>
+    <script src="/public/assets/libs/angular.js/angular-translate.js" type="text/javascript"></script>
+
+    <script src="/public/translation/pt_br.js" type="text/javascript"></script>
+
+    <script src="/public/modules/signup.js"></script>
+
+    <script src="/public/directives/loading.js" type="text/javascript"></script>
+
+    <script src="/public/services/AlertsService.js" type="text/javascript"></script>
+
+    <script src="/public/controllers/AlertsController.js" type="text/javascript"></script>
+    <script src="/public/controllers/SignupController.js" type="text/javascript"></script>
+
+</head>
+<body ng-controller="AlertsController">
+    <div style="position: fixed;
+             top: 20px; z-index: 5000;
+             left: 50%; margin-left: -50px;" class="panel panel-info" data-loading>
+        <div class="panel-body bg-info">
+            <img src="/public/assets/img/loading.gif" /><span class="text-muted"> Processando...</span>
+        </div>
+    </div>
+    <div style="position: fixed;
+             top: 20px; z-index: 5000; width: 250px; text-align: center;
+             left: 50%; margin-left: -125px;">
+        <div ng-repeat="(key,val) in alerts" class="alert {{key}}">
+            <div ng-repeat="msg in val">{{msg}}</div>
+        </div>
+    </div>
+    <div class="well well-sm header">
+        <a class="btn btn-default pull-right" href="/login">Login</a>
+    </div>
+    <div class=" container-fluid" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col-lg-4 col-md-3 hidden-xs">
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <form class="panel panel-default panel-signup" ng-controller="SignupController as ctrlSignup">
+                    <div class="panel-body">
+                        <section>
+                            <label>Nome</label>
+                            <input type="text" name="name" ng-model="user.name" class="form-control">
+                            <label>Usuário</label>
+                            <input type="text" name="username" ng-model="user.username" class="form-control">
+                            <label>Senha</label>
+                            <input type="password" name="password" ng-model="user.password" class="form-control">
+                            <label>Email</label>
+                            <input type="email" name="email" ng-model="user.email" class="form-control">
+                        </section>
+                    </div>
+                    <div class="panel-footer">
+                        <a class="btn btn-default" ng-click="ctrlSignup.signup(user)">Confirmar</a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 col-md-3">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

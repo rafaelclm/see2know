@@ -1,0 +1,58 @@
+﻿<div class="container" ng-controller="ViewTutorialController as ctrlViewTutorial" ng-init="ctrlViewTutorial.init()">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="pull-left">
+                <h1 style="font-family: OpenSans; font-weight: bold;">{{tutorial.title}}</h1>
+            </div>
+            <div class="pull-right">
+                <div class="btn-group">
+                    <label class="btn btn-default" ng-model="favorite" style="z-index: 0;"
+                           ng-click="ctrlViewTutorial.addToFavorites(tutorial._id, favorite)" btn-checkbox><i class="icon20-star"></i></label>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-8 col-sm-7">
+                    <div ng-repeat="page in tutorial.pages" ng-show="currentPage === ($index + 1)" ng-class="'slide-down'">
+                        <div class="row">
+                            <article class="col-lg-12">
+                                <div id="description" ng-show="currentPage === 1" class="well well-sm">
+                                    <h4>Descrição</h4>
+                                    <hr/>
+                                    <label class="text-muted">
+                                        {{tutorial.description}}
+                                    </label>
+                                </div>
+                                <div ng-repeat="widget in page.body">
+                                    <div widget="widget" theme="default"></div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-5">
+                    <div class="well well-sm">
+                        <span class="timeline-seperator">
+                            <small class="text-muted pull-right"> por {{tutorial.author.name}}</small>
+                            <div class="panel panel-default pull-left" style="background: whitesmoke; width: 40px; height: 40px; margin-top: -10px;"
+                                 data-original="{{tutorial.author.imageProfile || 'http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png'}}"
+                                 img-liquid-fill lazy-load-paramaters="{
+                             effect: 'fadeIn',
+                             effectspeed: 500
+                             }">
+                                <img src="" />
+                            </div>
+                        </span>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <pagination direction-links="false" boundary-links="true"
+                        total-items="totalItems" ng-model="currentPage"></pagination>
+        </div>
+    </div>
+</div>

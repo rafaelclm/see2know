@@ -1,0 +1,24 @@
+﻿<div ng-controller="WidgetController" class="row" ng-show="showTemplates.value" ng-class="'scale-fade'">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a ng-repeat="widget in widgets" href=""
+               class="list-group-item text-center" ng-click="setWidgetSelected(widget.name)">
+                <b style="text-transform: uppercase; font-size: 12px;">{{widget.name}}</b>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div ng-repeat="widget in widgets" ng-show="widgetSelected === widget.name" ng-class="'scale-fade'">
+            <div class="pull-right">
+                <a class="btn btn-default btn-xs" ng-disabled="editorEnabled" ng-click="ctrlTutorial.insertWidget(widget, currentPage)">
+                    Inserir
+                </a>
+                <br />
+            </div>
+            <div class="clearfix"></div>
+            <hr />
+            <div widget="widget" on-remove="removeWidget"
+                 template="panel" theme="default" title="{{widget.name}}" is-editable="false" show-header="true"></div>
+        </div>
+    </div>
+</div>

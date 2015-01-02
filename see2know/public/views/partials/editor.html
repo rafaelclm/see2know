@@ -1,0 +1,88 @@
+﻿<div ng-controller="TutorialController as ctrlTutorial" ng-init="ctrlTutorial.init()">
+    <div class="moveToMenu" id="container-editor" ng-show="panel === 'details'" ng-class="'scale-fade'">
+        <div ng-include="'public/views/partials/editor.details.html'"></div>
+    </div>
+    <div ng-include="'public/views/partials/editor.content.html'"></div>
+    <div class="well well-sm footer moveToMenu">
+        <div class="btn-group btn-group-lg">
+            <label class="btn btn-default" ng-model="panel" btn-radio="'editor'">Editor</label>
+            <label class="btn btn-default" ng-model="panel" btn-radio="'details'">Detalhes</label>
+            <label class="btn btn-default" ng-model="panel" btn-radio="'preview'" ng-click="ctrlTutorial.showPreview()">Preview</label>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-default" ng-click="ctrlTutorial.saveLesson(tutorial, content)">Salvar</a>
+        </div>
+    </div>
+</div>
+<style>
+    #container-editor {
+        position: fixed;
+        top: 70px;
+        bottom: 50px;
+        left: 3px;
+        right: 3px;
+        font-family: 'OpenSans';
+    }
+
+    #editor, #preview{
+        margin-bottom: 70px !important;
+    }
+   
+    #details1 {
+        position: absolute;
+        top: 0px;
+        bottom: 3px;
+        left: 33px;
+        right: 51%;
+        font-family: 'OpenSans';
+        border: 1px lightgray solid;
+    }
+
+        #editor .panel-body {
+            overflow: auto !important;
+        }
+
+    #sourcecode {
+        position: absolute;
+        top: 60px;
+        bottom: -10px;
+        left: 0px;
+        right: 0px;
+        font-family: 'OpenSans';
+        border: 1px lightgray solid;
+    }
+
+    #details2 {
+        position: absolute;
+        top: 0px;
+        bottom: 3px;
+        left: 51%;
+        right: 33px;
+        font-family: 'OpenSans';
+        border: 1px lightgray solid;
+        overflow: auto !important;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: OpenSans;
+        letter-spacing: 1px;
+    }
+
+    p {
+        letter-spacing: 1px;
+        font-family: OpenSans !important;
+    }
+
+    .image {
+        height: 250px;
+    }
+
+    .container-image {
+        width: 250px;
+        margin: auto;
+    }
+
+    tab-heading{
+        cursor: pointer;
+    }
+</style>

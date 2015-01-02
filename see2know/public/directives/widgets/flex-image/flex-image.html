@@ -1,0 +1,18 @@
+﻿<div style="max-width: 500px; margin: auto;">
+    <div ng-show="editorEnabled">
+        <br />
+        <input type="text" class="form-control" ng-model="widget.source.url" placeholder="URL do vídeo..." />
+        <br />
+        <a class="btn btn-default btn-xs" ng-click="save()">Save</a>
+        or
+        <a class="btn btn-default btn-xs" ng-click="disableEditor()">Cancel</a>
+    </div>
+    <br />
+    <div id="flex-image">
+        <div style="max-width: 500px; max-height: 500px; margin: auto;">
+            <div class="panel panel-default flex-media imgLiquidFill" img-liquid-fill>
+                <img ng-src="{{trustSrcWithImageLiquid(widget.source.url)}}" />
+            </div>
+        </div>
+    </div>
+</div>

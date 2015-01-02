@@ -1,0 +1,21 @@
+﻿<div ng-show="editorEnabled">
+    <select class="form-control input-sm" style="width: 100%" ng-model="widget.source.language">
+        <option value="java">Java</option>
+        <option value="javascript">Javascript</option>
+    </select>
+    <br />
+    <textarea ui-codemirror="{
+        lineWrapping : true,
+        lineNumbers: true,
+        theme: 'ambiance'
+    }" ng-model="widget.source.code"></textarea>
+    <br />
+    <a class="btn btn-default btn-xs" ng-click="save()">Save</a>
+    or
+    <a class="btn btn-default btn-xs" ng-click="disableEditor()">Cancel</a>
+</div>
+<div ng-hide="editorEnabled">
+    <div hljs language="{{widget.source.language}}" source="widget.source.code">
+
+    </div>
+</div>

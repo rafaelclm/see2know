@@ -1,0 +1,75 @@
+﻿<div ng-controller="HomeController as ctrlHome" ng-init="ctrlHome.init()">
+    <div class="well well-sm" style="margin-top: -22px;">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="textSearch" style="z-index: 0;" placeholder="Pesquisar tutoriais..." />
+            <div class="input-group-btn">
+                <a class="btn btn-default btn-sm"><i class="icon20-search" ng-click="ctrlHome.getTutorialsPublished(true);"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="container-masonry" column-width="260" masonry="{isFitWidth: true}"
+         infinite-scroll='ctrlHome.getTutorialsPublished()' infinite-scroll-distance='0'>
+        <div class="panel panel-default masonry-brick" ng-repeat="tutorial in tutorials">
+            <div class="panel-body">
+                <h5>
+                    <b><a href="">{{tutorial.title}}</a></b>
+                </h5>
+                <span class="timeline-seperator margin-bottom-10">
+                    <small class="text-muted pull-left">Criado em {{tutorial.creationDate| moment: 'DD-MM-YYYY HH:mm:ss'}}</small>
+                </span>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="panel panel-default margin-top-10 image-tutorial"
+                             style="background: whitesmoke;" data-original="{{tutorial.imageLesson}}"
+                             id="image-tutorial" img-liquid-fill lazy-load-paramaters="{
+                         effect: 'fadeIn',
+                         effectspeed: 500
+                         }">
+                            <img class="margin-top-10" ng-show="tutorial.imageId" src="">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <span class="timeline-seperator">
+                            <small class="text-muted pull-right"> por {{tutorial.author.name}}</small>
+                            <div class="panel panel-default pull-left" style="background: whitesmoke; width: 40px; height: 40px; margin-top: -10px;"
+                                 data-original="{{tutorial.author.profileImage || 'http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png'}}"
+                                 img-liquid-fill lazy-load-paramaters="{
+                             effect: 'fadeIn',
+                             effectspeed: 500
+                             }">
+                                <img src="" />
+                            </div>
+                        </span>
+                        <div class="clearfix"></div>
+                        <span class="message-text">
+                            <label class="text-muted">
+                                {{tutorial.description}}
+                            </label>
+                            <span class="timeline-seperator">
+                                <small class="text-muted pull-right"> Ultima atualização: {{tutorial.lastUpdate| fromNow}}</small>
+                            </span>
+                        </span><br />
+                        <tags-input ng-show="tutorial.tags" class="margin-bottom-5 margin-top-5" ng-model="tutorial.tags" read-only="true" can-remove="false"></tags-input>
+                        <a class="btn btn-primary margin-bottom-5 margin-top-10 pull-right" ng-click="ctrlHome.viewTutorial(tutorial)">Ver mais...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-view></div>
+<style>
+    .image-tutorial {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .container-masonry {
+        width: 100%;
+        margin: auto;
+    }
+
+    .masonry-brick {
+        width: 250px;
+    }
+</style>
